@@ -1,0 +1,107 @@
+.gallery{
+    color: #fff;
+    margin-bottom: 130px;
+}
+.gallery__content{
+    display: flex;
+}
+.gallery__left{
+    width: 50%;
+}
+.gallery__left-photo{
+    width: 100%;
+}
+.gallery__right{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 50%;
+}
+.gallery__right-row{
+    display: flex;
+}
+.gallery__right-item{
+    position: relative;
+    max-height: 336px;
+    margin: 0 0 0 10px;
+    height: 100%;
+}
+.gallery__right-photo{
+    width: 100%;
+}
+.gallery__right-info{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    background: #00000080;
+    transition: all 0.2s ease;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+}
+.gallery__right-info_show{
+    transition: all 0.2s ease;
+    opacity: 1;
+    visibility: visible;
+}
+.gallery__right-full_screen{
+    align-self: end;
+    cursor: pointer;
+    stroke: #fff;
+    transition: all 0.2s ease;
+
+    &:hover{
+        stroke: rgb(103, 180, 243);
+        transition: all 0.2s ease;
+    }
+}
+.gallery__right-content{
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    stroke: #fff;
+    transition: all 0.2s ease;
+
+    &:hover{
+        stroke: rgb(103, 180, 243);
+        transition: all 0.2s ease;
+        color: rgb(103, 180, 243);
+    }
+}
+.gallery__right-count_favorite{
+    align-self: center;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    stroke: #fff;
+    transition: all 0.2s ease;
+
+    &:hover{
+        stroke: rgb(103, 180, 243);
+        color: rgb(103, 180, 243);
+        transition: all 0.2s ease;
+    }
+}
+@media(max-width: 450px){
+    .gallery__content{
+        flex-direction: column;
+    }
+    .gallery__left,
+    .gallery__right{
+        width: 100%;
+    }
+    .gallery__right-item{
+        margin-left: 0;
+    }
+    .gallery__right-row{
+        gap: 5px;
+    }
+}

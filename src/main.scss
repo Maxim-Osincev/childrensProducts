@@ -1,0 +1,70 @@
+//Container & breakpoint
+$containerwidth: 1385 + px;
+$containerpadding: 10 + px;
+$breakpoint1458: 1449.98 + px;
+$breakpoint992: 991.98 + px;
+$breakpoint768: 767.98 + px;
+$breakpoint480: 479.98 + px;
+
+@media(max-width: $containerwidth){
+    .container{
+        padding: 0 $containerpadding;
+    }
+}
+
+//Burger menu
+/* $burgerBreakpoint: $breakpoint768; */
+/* $burgerColor: 'black'; */
+/* $burgerActiveColor: 'black'; */
+
+//Colors
+$white: #ffffff;
+$black: rgba(51, 51, 51, 1);
+;
+
+
+@font-face {
+    font-family: 'Open Sans', sans-serif;
+    src: url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    
+    font-family: 'Open Sans', sans-serif;
+    letter-spacing: 0.05em;
+}
+a{
+    color: $black;
+}
+
+html,
+body{ 
+    width: 100%;
+    height: 100%;
+}
+.container{
+    max-width: $containerwidth;
+    margin: 0 auto;
+}
+/* @media(min-width: $breakpoint768){
+    .container{
+        padding: 0 65px;
+        max-width: 1330px;
+    }
+} */
+
+
+
+.root{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    color: $black;
+}
