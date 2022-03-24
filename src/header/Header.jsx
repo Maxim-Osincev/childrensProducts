@@ -13,6 +13,13 @@ function Header() {
       document.querySelector('.burger__menu').classList.remove('burger__menu-active');
     }
   });
+  
+  if(document.documentElement.clientWidth > 425){
+    document.addEventListener('scroll', () => {
+      document.querySelector('.header').style.opacity = 1 - (window.pageYOffset / 500).toFixed(1);
+    })
+  }
+
 
 
   return (

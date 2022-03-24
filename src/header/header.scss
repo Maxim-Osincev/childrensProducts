@@ -1,8 +1,13 @@
 .header{
+    position: fixed;
+    z-index: 2;
+    width: 100%;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     padding: 8px 0;
+    background: #fff;
 }
 .header__wrapper{
+    position: relative;
     display: flex;
     justify-content: space-between;
 }
@@ -97,7 +102,7 @@
         display: block;
         position: absolute;
         z-index: 5;
-        top: -100%;
+        top: -300px;
         left: 0;
         width: 100%;
         background: #fff;

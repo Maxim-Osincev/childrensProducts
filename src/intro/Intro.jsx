@@ -3,6 +3,8 @@ import "./intro.scss";
 
 function Intro() {
     let [productValue, setProductValue] = useState(1);
+    let [selectedType, setSelectedType] = useState('Корзину');
+    let [selectedProduct, setSelectedProduct] = useState('Пижама для девочек');
 
     function decrementProductValue(){
         productValue <= 1 ? productValue : setProductValue(prev => prev - 1);
@@ -14,7 +16,7 @@ function Intro() {
     document.addEventListener('click', e => {
       if(e.target.closest('.list_size-item')){
         document.querySelector('.list_size').classList.remove('visible');
-        e.target.closest('.intro__right-size_input')
+        document.querySelector('.list_size-value').textContent = e.target.closest('.list_size-item').textContent;
       } else if(e.target.closest('.intro__right-size_input')){
         document.querySelector('.list_size').classList.add('visible');
       } else {
@@ -22,8 +24,50 @@ function Intro() {
       }
     });
 
+    document.addEventListener('click', e => {
+      if(e.target.closest('.intro__left-item_photo')){
+        let mainSrc = document.querySelector('.intro__left-main_img').src;
+        let secondSrc = e.target.src;
+
+        document.querySelector('.intro__left-main_img').src = secondSrc;
+        e.target.src = mainSrc;
+      }
+    });
+
+
+    function addToBasket(){
+      document.querySelector('.intro__addedItem-content').classList.add('active');
+      document.querySelector('.intro__addedItem-window').classList.add('active');
+      setSelectedType('Корзину');
+      setTimeout(() => {
+        document.querySelector('.intro__addedItem-content').classList.remove('active');
+        document.querySelector('.intro__addedItem-window').classList.remove('active');
+      }, 2000)
+    }
+    
+    function addToFavorite(e){
+      e.target.closest('.intro__right-add_favorites').classList.toggle('active');
+      if(e.target.closest('.intro__right-add_favorites.active')){
+        document.querySelector('.intro__addedItem-content').classList.add('active');
+        document.querySelector('.intro__addedItem-window').classList.add('active');
+        setSelectedType('Избранное');
+        setTimeout(() => {
+          document.querySelector('.intro__addedItem-content').classList.remove('active');
+          document.querySelector('.intro__addedItem-window').classList.remove('active');
+        }, 2000)
+      }      
+    }
+
+
   return (
     <div className="intro">
+      <div className="intro__addedItem">
+        <div className="intro__addedItem-window">
+          <div className="intro__addedItem-content">
+            {`Товар "${selectedProduct}" в количестве ${productValue} успешно добавлен в ${selectedType}`}
+          </div>
+        </div>
+      </div>
       <div className="container">
         <div className="intro__content">
           <div className="intro__left">
@@ -51,7 +95,7 @@ function Intro() {
           </div>
           <div className="intro__right">
             <div className="intro__right-main">
-              <div className="intro__right-title">Пижама для девочек</div>
+              <div className="intro__right-title">{selectedProduct}</div>
               <div className="intro__right-code">Арт. 02765/46</div>
               <div className="intro__right-reviews">
                 <span>Отзывы</span>
@@ -109,7 +153,7 @@ function Intro() {
                     <li className="list_size-item">40-42</li>
                     <li className="list_size-item">42-44</li>
                   </ul>
-                  <span>Выбрать размер</span>
+                  <span className="list_size-value">Выбрать размер</span>
                 </div>
                 <a href="#">
                   <div className="intro__right-size_help">
@@ -123,10 +167,10 @@ function Intro() {
                   <div className="intro__right-add_count">{productValue}</div>
                   <div className="intro__right-add_increment" onClick={incrementProductValue}>+</div>
                 </div>
-                <div className="intro__right-add_basket">
+                <div className="intro__right-add_basket" onClick={addToBasket}>
                   Добавить в корзину
                 </div>
-                <div className="intro__right-add_favorites">
+                <div className="intro__right-add_favorites" onClick={addToFavorite}>
                   <svg
                     width="24"
                     height="24"

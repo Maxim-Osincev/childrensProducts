@@ -4,7 +4,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 
 function Footer() {
-    let [followSaleInput, setFollowSaleInput] = useState('')
+    let [followSaleInput, setFollowSaleInput] = useState('');
+
+  function checkMail(e){
+    e.preventDefault();
+
+    let reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+    if(!reg.test(document.querySelector('.footer__follow_sale-input').value)){
+      document.querySelector('.footer__follow_sale-input').classList.add('_err');
+    }else{
+      document.querySelector('.footer__follow_sale-input').classList.remove('_err');
+    };
+  }
+
   return (
     <div className="footer">
       <div className="container">
@@ -32,7 +44,7 @@ function Footer() {
                     <input className="footer__follow_sale-input" type='text' placeholder='Адрес электронной почты' value={followSaleInput} onChange={e => setFollowSaleInput(e.target.value)}/>
                     <FontAwesomeIcon className="footer__follow_sale-input_close" icon={faXmark} onClick={() => setFollowSaleInput('')}/>
                 </div>
-                <button type="submit" className="footer__follow_sale-button" onClick={e => e.preventDefault()}>Подписаться</button>
+                <button type="submit" className="footer__follow_sale-button" onClick={checkMail}>Подписаться</button>
             </form>
           </div>
         </div>
